@@ -62,8 +62,42 @@ class TasksScreen extends StatelessWidget {
                   topRight: Radius.circular(30.0),
                 ),
               ),
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
+              child: ListView(
+                children: <Widget>[
+                  Task(label: 'hello world', done: false),
+                  Task(label: 'write code', done: true),
+                  Task(label: 'become ironman', done: false),
+                ],
+              ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class Task extends StatelessWidget {
+  String label;
+  bool done = false;
+  Task({this.label, this.done});
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 0.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            '$label',
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500,
+                decoration:
+                    done ? TextDecoration.lineThrough : TextDecoration.none),
+          ),
+          Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
         ],
       ),
     );
