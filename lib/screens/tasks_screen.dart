@@ -79,8 +79,8 @@ class TasksScreen extends StatelessWidget {
 }
 
 class Task extends StatelessWidget {
-  String label;
-  bool done = false;
+  final String label;
+  final bool done;
   Task({this.label, this.done});
   @override
   Widget build(BuildContext context) {
