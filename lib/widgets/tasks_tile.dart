@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TasksTile extends StatelessWidget {
-  String label;
+  final String label;
   TasksTile({this.label});
   @override
   Widget build(BuildContext context) {
