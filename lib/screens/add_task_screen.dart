@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AddTaskScreen extends StatefulWidget {
+class AddTaskScreen extends StatelessWidget {
   final Function(String) addTaskCallback;
   AddTaskScreen({this.addTaskCallback});
 
   @override
-  _AddTaskScreenState createState() => _AddTaskScreenState();
-}
-
-class _AddTaskScreenState extends State<AddTaskScreen> {
-  String addTaskName;
-  @override
   Widget build(BuildContext context) {
+    // store name here in build
+    String addTaskName;
+
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -46,8 +43,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               FlatButton(
                 color: Colors.lightBlueAccent,
                 onPressed: () {
-                  print('Add task');
-                  widget.addTaskCallback(addTaskName);
+                  addTaskCallback(addTaskName);
                   Navigator.pop(context);
                 },
                 child: Text(
