@@ -4,20 +4,21 @@ import 'package:todoey_flutter/models/task.dart';
 import 'tasks_tile.dart';
 
 class TasksList extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
-// get our tasks from the provider
-    final TaskData tasks = Provider.of<TaskData>(context, listen: true);
-
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return TasksTile(
-            taskTitle: tasks.tasks[index].name,
-            isChecked: tasks.tasks[index].isDone,
+    return Consumer<TaskData>(builder: (context, taskData, child) {
+      return ListView.builder(
+        itemBuilder: (context, index) {
+          return TasksTile(
+            taskTitle: taskData.tasks[index].name,
+            isChecked: taskData.tasks[index].isDone,
             checkboxCallback: (isChecked) {
-              tasks.tasks[index].toggleDone();
-            });
-      },
-      itemCount: tasks.tasks.length,
-    );
+              // taskData.tasks[index].toggleDone();
+            },
+          );
+        },
+        itemCount: taskData.tasks.length,
+      );
+    });
   }
 }
