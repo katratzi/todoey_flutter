@@ -8,6 +8,10 @@ class TaskData with ChangeNotifier {
     Task(name: 'one more thing', isDone: false),
   ];
   List<Task> get tasks => _tasks;
+
+  int get taskCount {
+    return tasks.length;
+  }
 }
 
 class Task with ChangeNotifier {
