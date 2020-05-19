@@ -4,25 +4,7 @@ import 'package:todoey_flutter/models/task.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
 import 'add_task_screen.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  List<Task> tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy bread'),
-    Task(name: 'Become ironman'),
-  ];
-
-  void addTask(String taskName) {
-    print('add task $taskName');
-    setState(() {
-      tasks.add(Task(name: taskName));
-    });
-  }
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +15,8 @@ class _TasksScreenState extends State<TasksScreen> {
           print('fab pressed');
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(addTaskCallback: addTask),
+            isScrollControlled: true,
+            builder: (context) => AddTaskScreen(),
           );
         },
         child: Icon(
