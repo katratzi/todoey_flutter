@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'package:flutter/foundation.dart';
 
 class TaskData with ChangeNotifier {
@@ -7,7 +8,10 @@ class TaskData with ChangeNotifier {
     Task(name: 'learn flutter', isDone: false),
     Task(name: 'one more thing', isDone: false),
   ];
-  List<Task> get tasks => _tasks;
+
+  UnmodifiableListView<Task> get tasks {
+    return UnmodifiableListView(_tasks);
+  }
 
   int get taskCount {
     return tasks.length;
